@@ -12,12 +12,14 @@ const copy = {
     checkIn: "Ouvrir le check-in",
     confirmed: "Confirme",
     checked: "Arrive",
+    source: "Source ecosysteme",
   },
   en: {
     eyebrow: "Event ticket",
     checkIn: "Open check-in",
     confirmed: "Confirmed",
     checked: "Checked in",
+    source: "Ecosystem source",
   },
 };
 
@@ -35,7 +37,8 @@ export default async function TicketPage({ params }: { params: Promise<{ token: 
           <QrCode className="size-14 text-primary" />
           <p className="mt-6 text-sm font-semibold uppercase tracking-[0.18em] text-primary">{t.eyebrow}</p>
           <h1 className="mt-3 text-4xl font-semibold">{ticket.eventName}</h1>
-          <p className="mt-4 text-lg text-muted-foreground">{ticket.attendeeName} - {status}</p>
+          <p className="mt-4 text-lg text-muted-foreground">{ticket.attendeeName} - {ticket.company} - {status}</p>
+          <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-primary">{t.source}: {ticket.source}</p>
           <div className="mt-8 rounded-lg border bg-muted p-6 font-mono text-sm">{ticket.token}</div>
           <Button asChild className="mt-8" variant="secondary"><Link href="/check-in">{t.checkIn}</Link></Button>
         </div>

@@ -3,7 +3,7 @@ import { ArrowRight, CalendarDays, CheckCircle2, QrCode, ScanLine, Ticket } from
 
 import { MarketingPageShell } from "@/components/marketing/page-shell";
 import { Button } from "@/components/ui/button";
-import { eventStats, events } from "@/data/eventpass";
+import { ecosystemTimeline, eventStats, events } from "@/data/eventpass";
 import { getCurrentLocale } from "@/lib/locale";
 
 const copy = {
@@ -14,6 +14,9 @@ const copy = {
     primary: "Voir les evenements",
     secondary: "Voir l'etude",
     modules: ["Capacite visible", "Billets par token", "Check-in admin", "Email fallback"],
+    ecosystemTitle: "Les evenements prolongent le parcours client.",
+    ecosystemText:
+      "EventPass utilise les memes personnes que les autres modules: un lead devient client, rejoint un atelier, achete du materiel dans CommerceKit et peut recevoir un suivi SupportDesk.",
   },
   en: {
     eyebrow: "Project 8 - Event registration",
@@ -22,6 +25,9 @@ const copy = {
     primary: "View events",
     secondary: "View case study",
     modules: ["Visible capacity", "Token tickets", "Admin check-in", "Email fallback"],
+    ecosystemTitle: "Events extend the client journey.",
+    ecosystemText:
+      "EventPass uses the same people as the other modules: a lead becomes a client, joins a workshop, buys materials in CommerceKit, and can receive SupportDesk follow-up.",
   },
 };
 
@@ -63,7 +69,7 @@ export default async function Home() {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p className="font-semibold">{event.name}</p>
-                        <p className="mt-1 text-sm text-muted-foreground">{event.venue}</p>
+                        <p className="mt-1 text-sm text-muted-foreground">{event.sourceModule}</p>
                       </div>
                       <p className="rounded-full bg-secondary px-2 py-1 text-xs font-medium">{event.registered}/{event.capacity}</p>
                     </div>
@@ -97,6 +103,28 @@ export default async function Home() {
             <h2 className="mt-5 text-2xl font-semibold">Check-in</h2>
             <p className="mt-2 text-sm text-primary-foreground/75">{locale === "fr" ? "Suivre les arrivees et le statut des billets." : "Review arrivals and ticket status."}</p>
           </Link>
+        </section>
+        <section className="border-y bg-primary text-primary-foreground">
+          <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[0.82fr_1.18fr]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-secondary">
+                KV Portfolio ecosystem
+              </p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-normal text-balance sm:text-5xl">
+                {t.ecosystemTitle}
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-primary-foreground/75">{t.ecosystemText}</p>
+            </div>
+            <div className="grid gap-3">
+              {ecosystemTimeline.map((item, index) => (
+                <div key={item.module} className="grid gap-3 rounded-lg border border-white/15 bg-white/[0.06] p-4 sm:grid-cols-[3rem_0.7fr_1fr]">
+                  <p className="font-mono text-sm text-secondary">0{index + 1}</p>
+                  <p className="font-semibold">{item.module}</p>
+                  <p className="text-sm text-primary-foreground/72">{item[locale]}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
       </main>
     </MarketingPageShell>

@@ -30,11 +30,12 @@ export default async function CheckInPage() {
         <h1 className="mt-4 text-4xl font-semibold tracking-normal">{t.title}</h1>
         <div className="mt-8 rounded-lg border bg-card">
           {tickets.map((ticket) => (
-            <div key={ticket.token} className="grid gap-3 border-b p-5 last:border-b-0 sm:grid-cols-[1fr_auto_auto]">
+            <div key={ticket.token} className="grid gap-3 border-b p-5 last:border-b-0 sm:grid-cols-[1fr_auto_auto_auto]">
               <div>
                 <p className="font-semibold">{ticket.attendeeName}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{ticket.eventName}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{ticket.company} - {ticket.eventName}</p>
               </div>
+              <p className="text-sm font-medium text-muted-foreground">{ticket.source}</p>
               <p className="text-sm font-medium">{ticket.checkedIn ? t.checked : t.confirmed}</p>
               {ticket.checkedIn ? <CheckCircle2 className="size-5 text-primary" /> : <ScanLine className="size-5 text-primary" />}
             </div>

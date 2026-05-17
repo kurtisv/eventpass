@@ -10,11 +10,13 @@ const copy = {
     eyebrow: "Evenements",
     title: "Catalogue des evenements",
     seats: "places",
+    source: "Module source",
   },
   en: {
     eyebrow: "Events",
     title: "Event catalog",
     seats: "seats",
+    source: "Source module",
   },
 };
 
@@ -34,6 +36,8 @@ export default async function EventsPage() {
               <p className="mt-5 text-sm text-muted-foreground">{event.type} - {event.date}</p>
               <h2 className="mt-1 text-2xl font-semibold">{event.name}</h2>
               <p className="mt-3 text-sm text-muted-foreground">{event.description[locale]}</p>
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">{t.source}</p>
+              <p className="mt-1 text-sm font-medium">{event.sourceModule}</p>
               <p className="mt-5 text-xs font-semibold uppercase tracking-[0.14em] text-primary">{event.registered}/{event.capacity} {t.seats}</p>
               <div className="mt-5 h-2 rounded-full bg-muted">
                 <div className="h-2 rounded-full bg-primary" style={{ width: `${(event.registered / event.capacity) * 100}%` }} />
