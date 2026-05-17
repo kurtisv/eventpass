@@ -99,7 +99,9 @@ async function ensureEcosystemTables() {
       "status" TEXT NOT NULL DEFAULT 'NEW',
       "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
       "readAt" TIMESTAMP(3)
-    );
+    )
+  `);
+  await prisma.$executeRawUnsafe(`
     CREATE TABLE IF NOT EXISTS "EcosystemNotification" (
       "id" TEXT PRIMARY KEY,
       "appKey" TEXT NOT NULL,
@@ -112,14 +114,14 @@ async function ensureEcosystemTables() {
       "actionLabel" TEXT,
       "actionUrl" TEXT,
       "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
-    );
-    CREATE INDEX IF NOT EXISTS "EcosystemEvent_flowId_idx" ON "EcosystemEvent"("flowId");
-    CREATE INDEX IF NOT EXISTS "EcosystemEvent_targetApp_idx" ON "EcosystemEvent"("targetApp");
-    CREATE INDEX IF NOT EXISTS "EcosystemEvent_eventType_idx" ON "EcosystemEvent"("eventType");
-    CREATE INDEX IF NOT EXISTS "EcosystemNotification_appKey_idx" ON "EcosystemNotification"("appKey");
-    CREATE INDEX IF NOT EXISTS "EcosystemNotification_eventId_idx" ON "EcosystemNotification"("eventId");
-    CREATE INDEX IF NOT EXISTS "EcosystemNotification_flowId_idx" ON "EcosystemNotification"("flowId");
+    )
   `);
+  await prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS "EcosystemEvent_flowId_idx" ON "EcosystemEvent"("flowId")`);
+  await prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS "EcosystemEvent_targetApp_idx" ON "EcosystemEvent"("targetApp")`);
+  await prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS "EcosystemEvent_eventType_idx" ON "EcosystemEvent"("eventType")`);
+  await prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS "EcosystemNotification_appKey_idx" ON "EcosystemNotification"("appKey")`);
+  await prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS "EcosystemNotification_eventId_idx" ON "EcosystemNotification"("eventId")`);
+  await prisma.$executeRawUnsafe(`CREATE INDEX IF NOT EXISTS "EcosystemNotification_flowId_idx" ON "EcosystemNotification"("flowId")`);
 }
 
 export async function getIncomingEcosystemNotifications(appKey: string, take = 6) {
@@ -186,6 +188,7 @@ export async function getRecentEcosystemEvents(take = 20) {
     return [];
   }
 }
+
 
 
 
