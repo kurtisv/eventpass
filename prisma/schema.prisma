@@ -207,6 +207,37 @@ model AuditLog {
   createdAt DateTime @default(now())
 }
 
+model EventPassEvent {
+  id          String            @id @default(cuid())
+  slug        String            @unique
+  name        String
+  date        DateTime
+  venue       String
+  capacity    Int
+  registered  Int               @default(0)
+  type        String
+  accent      String?
+  description String?
+  tickets     EventPassTicket[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+model EventPassTicket {
+  id            String                @id @default(cuid())
+  eventId       String
+  token         String                @unique
+  attendeeName  String
+  attendeeEmail String
+  status        EventPassTicketStatus @default(CONFIRMED)
+  checkedInAt   DateTime?
+  event         EventPassEvent        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  createdAt     DateTime              @default(now())
+
+  @@index([attendeeEmail])
+  @@index([status])
+}
+
 enum Role {
   ADMIN
   OWNER
@@ -235,4 +266,11 @@ enum Plan {
   PRO
   BUSINESS
   ENTERPRISE
+}
+
+enum EventPassTicketStatus {
+  CONFIRMED
+  CHECKED_IN
+  CANCELLED
+  WAITLISTED
 }

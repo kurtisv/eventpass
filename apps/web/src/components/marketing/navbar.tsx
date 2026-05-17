@@ -1,33 +1,52 @@
 import Link from "next/link";
 
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { Button } from "@/components/ui/button";
+import { getCurrentLocale } from "@/lib/locale";
 
-const navItems = [
-  { href: "/services", label: "Services" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/booking", label: "Booking" },
-  { href: "/developers", label: "API" },
-  { href: "/docs", label: "Docs" },
-  { href: "/contact", label: "Contact" },
-];
+const copy = {
+  fr: {
+    nav: [
+      { href: "/events", label: "Evenements" },
+      { href: "/check-in", label: "Check-in" },
+      { href: "/case-study", label: "Etude" },
+    ],
+    cta: "S'inscrire",
+  },
+  en: {
+    nav: [
+      { href: "/events", label: "Events" },
+      { href: "/check-in", label: "Check-in" },
+      { href: "/case-study", label: "Case study" },
+    ],
+    cta: "Register",
+  },
+};
 
-export function Navbar() {
+export async function Navbar() {
+  const locale = await getCurrentLocale();
+  const t = copy[locale];
+
   return (
-    <header className="border-b bg-background">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="text-base font-semibold">
-          KV Web Starter
+    <header className="border-b bg-card/90 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+        <Link href="/" className="flex items-center gap-2 text-base font-semibold">
+          <span className="size-3 rounded-full bg-[var(--accent)]" />
+          EventPass
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => (
+          {t.nav.map((item) => (
             <Link key={item.href} href={item.href} className="text-sm text-muted-foreground hover:text-foreground">
               {item.label}
             </Link>
           ))}
         </nav>
-        <Button asChild size="sm">
-          <Link href="/login">Dashboard</Link>
-        </Button>
+        <div className="flex items-center gap-2">
+          <LanguageSwitcher current={locale} />
+          <Button asChild size="sm">
+            <Link href="/events">{t.cta}</Link>
+          </Button>
+        </div>
       </div>
     </header>
   );
