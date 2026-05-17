@@ -123,8 +123,9 @@ export async function createTicketFromEcosystemEvent(formData: FormData) {
   if (!event) return;
 
   const payload = payloadOf(event.payload);
-  const attendeeName = event.customerName || text(payload.customerName) || "Participant ecosysteme";
-  const attendeeEmail = event.customerEmail || text(payload.customerEmail) || "participant@ecosystem.local";
+  const attendeeName = event.customerName || text(payload.customerName) || text(payload.name) || "Participant recu";
+  const attendeeEmail = event.customerEmail || text(payload.customerEmail) || text(payload.email);
+  if (!attendeeEmail) return;
   const projectName = text(payload.projectName) || event.title;
   const orderNumber = text(payload.orderNumber) || undefined;
   const eventName = `Atelier - ${projectName}`;
@@ -142,7 +143,7 @@ export async function createTicketFromEcosystemEvent(formData: FormData) {
       slug: eventSlug,
       name: eventName,
       date: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
-      venue: text(payload.venue) || "A confirmer",
+      venue: text(payload.venue) || "Lieu a definir",
       capacity: Math.max(1, numberValue(payload.capacity) ?? 25),
       registered: 1,
       type: "Workshop",
