@@ -35,7 +35,19 @@ export async function publishEcosystemEvent(input: PublishEcosystemEventInput) {
   const targetApps = input.targetApps?.length ? input.targetApps : input.targetApp ? [input.targetApp] : [];
 
   try {
-    const event = await prisma.ecosystemEvent.create({
+    return await writeEcosystemEvent(input, flowId, targetApps);
+  } catch {
+    try {
+      await ensureEcosystemTables();
+      return await writeEcosystemEvent(input, flowId, targetApps);
+    } catch {
+      return null;
+    }
+  }
+}
+
+async function writeEcosystemEvent(input: PublishEcosystemEventInput, flowId: string, targetApps: string[]) {
+  const event = await prisma.ecosystemEvent.create({
     data: {
       flowId,
       sourceApp: input.sourceApp,
@@ -66,10 +78,48 @@ export async function publishEcosystemEvent(input: PublishEcosystemEventInput) {
     });
   }
 
-    return event;
-  } catch {
-    return null;
-  }
+  return event;
+}
+
+async function ensureEcosystemTables() {
+  await prisma.$executeRawUnsafe(`
+    CREATE TABLE IF NOT EXISTS "EcosystemEvent" (
+      "id" TEXT PRIMARY KEY,
+      "flowId" TEXT NOT NULL,
+      "sourceApp" TEXT NOT NULL,
+      "targetApp" TEXT,
+      "eventType" TEXT NOT NULL,
+      "entityType" TEXT NOT NULL,
+      "entityId" TEXT,
+      "customerName" TEXT,
+      "customerEmail" TEXT,
+      "title" TEXT NOT NULL,
+      "description" TEXT,
+      "payload" JSONB,
+      "status" TEXT NOT NULL DEFAULT 'NEW',
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      "readAt" TIMESTAMP(3)
+    );
+    CREATE TABLE IF NOT EXISTS "EcosystemNotification" (
+      "id" TEXT PRIMARY KEY,
+      "appKey" TEXT NOT NULL,
+      "eventId" TEXT NOT NULL,
+      "flowId" TEXT,
+      "title" TEXT NOT NULL,
+      "message" TEXT NOT NULL,
+      "priority" TEXT NOT NULL DEFAULT 'NORMAL',
+      "isRead" BOOLEAN NOT NULL DEFAULT false,
+      "actionLabel" TEXT,
+      "actionUrl" TEXT,
+      "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    CREATE INDEX IF NOT EXISTS "EcosystemEvent_flowId_idx" ON "EcosystemEvent"("flowId");
+    CREATE INDEX IF NOT EXISTS "EcosystemEvent_targetApp_idx" ON "EcosystemEvent"("targetApp");
+    CREATE INDEX IF NOT EXISTS "EcosystemEvent_eventType_idx" ON "EcosystemEvent"("eventType");
+    CREATE INDEX IF NOT EXISTS "EcosystemNotification_appKey_idx" ON "EcosystemNotification"("appKey");
+    CREATE INDEX IF NOT EXISTS "EcosystemNotification_eventId_idx" ON "EcosystemNotification"("eventId");
+    CREATE INDEX IF NOT EXISTS "EcosystemNotification_flowId_idx" ON "EcosystemNotification"("flowId");
+  `);
 }
 
 export async function getIncomingEcosystemNotifications(appKey: string, take = 6) {
