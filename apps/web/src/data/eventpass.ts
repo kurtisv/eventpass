@@ -36,7 +36,7 @@ export const events = [
 ];
 
 export const tickets = [
-  { token: "eventpass-demo-ticket", attendeeName: "Mara Chen", attendeeEmail: "mara@example.com", company: "Northline Studio", eventName: "KV Client Launch Summit", source: "ClientHub", status: "CONFIRMED", checkedIn: false },
+  { token: "eventpass-demo-ticket", attendeeName: "Lead Luma entrant", attendeeEmail: "lead@example.com", company: "Northline Studio", eventName: "KV Client Launch Summit", source: "ClientHub", status: "CONFIRMED", checkedIn: false },
   { token: "eventpass-demo-checked", attendeeName: "Elliot Moore", attendeeEmail: "elliot@example.com", company: "Atelier Boutique", eventName: "Design Ops Night", source: "CommerceKit", status: "CHECKED_IN", checkedIn: true },
   { token: "eventpass-demo-support", attendeeName: "Nadia Fortin", attendeeEmail: "nadia@example.com", company: "Riverside Condo", eventName: "Design Ops Night", source: "SupportDesk Lite", status: "CONFIRMED", checkedIn: false },
 ];

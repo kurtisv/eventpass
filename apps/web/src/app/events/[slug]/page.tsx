@@ -54,15 +54,13 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
             <input
               className="h-10 border bg-background px-3 text-sm"
               name="attendeeName"
-              placeholder="Mara Chen"
-              defaultValue="Mara Chen"
+              placeholder={locale === "fr" ? "Nom du participant" : "Attendee name"}
             />
             <input
               className="h-10 border bg-background px-3 text-sm"
               name="attendeeEmail"
               type="email"
-              placeholder="mara@example.com"
-              defaultValue="mara@example.com"
+              placeholder="participant@example.com"
             />
             <Button type="submit" size="lg">
               <Ticket className="size-4" /> {t.ticket}
