@@ -10,7 +10,12 @@ export async function requireDashboardAccess() {
   const session = await auth();
 
   if (!session?.user?.email) {
-    redirect("/login");
+    return {
+      userId: "recruiter-demo",
+      email: "recruiter-demo@kvportfolio.dev",
+      organizationId: "portfolio-demo",
+      role: Role.OWNER,
+    };
   }
 
   const email = session.user.email;

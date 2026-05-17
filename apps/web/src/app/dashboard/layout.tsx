@@ -35,7 +35,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
     <div className="min-h-screen bg-muted text-foreground">
       <aside className="fixed inset-y-0 left-0 hidden w-64 border-r bg-background px-4 py-5 lg:block">
         <Link href="/" className="block px-2 text-lg font-semibold">
-          KV Web Starter
+          EventPass
         </Link>
         <nav className="mt-8 grid gap-1">
           {navItems.map((item) => (
