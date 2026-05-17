@@ -10,6 +10,8 @@ const stats = [
   ["Abonnements actifs", "0"],
 ];
 
+const timeline = ["Luma Studio", "QuotePilot", "ReserveFlow", "ClientHub", "CommerceKit", "EventPass", "SupportDesk Lite", "API Meter"];
+
 export default async function DashboardPage() {
   const [participantEvents, tickets] = await Promise.all([
     getIncomingEcosystemEvents("eventpass", undefined, 8),
@@ -27,6 +29,9 @@ export default async function DashboardPage() {
           <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">
             Dashboard
           </p>
+          <p className="mt-2 inline-flex border bg-secondary px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+            KV Portfolio Ecosystem - Demo Mode
+          </p>
           <h1 className="mt-3 text-3xl font-semibold">Centre de controle</h1>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -40,6 +45,16 @@ export default async function DashboardPage() {
         <div className="mt-8">
           <EcosystemNotificationPanel appKey="eventpass" />
         </div>
+        <section className="mt-8 rounded-md border bg-card p-5">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Timeline du parcours</p>
+          <div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
+            {timeline.map((item, index) => (
+              <span key={item} className={index === 5 ? "border bg-foreground px-3 py-2 text-background" : "border bg-background px-3 py-2"}>
+                {String(index + 1).padStart(2, "0")} {item}
+              </span>
+            ))}
+          </div>
+        </section>
         <section className="mt-8 rounded-md border bg-card">
           <div className="border-b p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
@@ -76,7 +91,7 @@ export default async function DashboardPage() {
             ))}
             {participantEvents.length === 0 ? (
               <p className="p-5 text-sm text-muted-foreground">
-                Aucun participant entrant pour l'instant. ClientHub ou CommerceKit alimentera cette file.
+                Aucun participant entrant pour l&apos;instant. ClientHub ou CommerceKit alimentera cette file.
               </p>
             ) : null}
           </div>
@@ -112,7 +127,7 @@ export default async function DashboardPage() {
             ))}
             {tickets.length === 0 ? (
               <p className="p-5 text-sm text-muted-foreground">
-                Aucun billet cree depuis l'ecosysteme pour l'instant.
+                Aucun billet cree depuis l&apos;ecosysteme pour l&apos;instant.
               </p>
             ) : null}
           </div>
