@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     actionUrl: data.actionUrl ?? "/dashboard",
     priority: data.priority ?? "NORMAL",
     payload: data.payload as never,
-  });
+  }).catch(() => null);
 
   if (event) {
     return NextResponse.json({ ok: true, eventId: event.id, flowId: event.flowId });
