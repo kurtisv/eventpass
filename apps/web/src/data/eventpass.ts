@@ -48,6 +48,19 @@ export const eventStats = [
   { label: "Token tickets", value: "3" },
 ];
 
+export const agendaBlocks = [
+  { time: "09:00", title: "Northline launch clinic", module: "QuotePilot", seats: "42/60" },
+  { time: "11:30", title: "ClientHub delivery review", module: "ClientHub", seats: "38/48" },
+  { time: "14:00", title: "CommerceKit materials pickup", module: "CommerceKit", seats: "27/36" },
+  { time: "16:15", title: "SupportDesk follow-up desk", module: "SupportDesk Lite", seats: "18/24" },
+];
+
+export const registrationLanes = [
+  { label: "Invited from ClientHub", value: "58", tone: "bg-[#7c4dff]" },
+  { label: "Paid through CommerceKit", value: "44", tone: "bg-[#ff7a45]" },
+  { label: "Checked in", value: "33", tone: "bg-[#1fbf9b]" },
+];
+
 export const ecosystemTimeline = [
   {
     module: "Luma Studio",

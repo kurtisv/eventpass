@@ -4,6 +4,7 @@ import { QrCode } from "lucide-react";
 import { MarketingPageShell } from "@/components/marketing/page-shell";
 import { Button } from "@/components/ui/button";
 import { tickets } from "@/data/eventpass";
+import { prisma } from "@/lib/db";
 import { getCurrentLocale } from "@/lib/locale";
 
 const copy = {
@@ -27,7 +28,20 @@ export default async function TicketPage({ params }: { params: Promise<{ token: 
   const { token } = await params;
   const locale = await getCurrentLocale();
   const t = copy[locale];
-  const ticket = tickets.find((item) => item.token === token) ?? tickets[0];
+  const dbTicket = await prisma.eventPassTicket.findUnique({
+    where: { token },
+    include: { event: true },
+  }).catch(() => null);
+  const ticket = dbTicket
+    ? {
+        token: dbTicket.token,
+        attendeeName: dbTicket.attendeeName,
+        company: dbTicket.attendeeEmail,
+        eventName: dbTicket.event.name,
+        source: "EventPass",
+        checkedIn: Boolean(dbTicket.checkedInAt),
+      }
+    : tickets.find((item) => item.token === token) ?? tickets[0];
   const status = ticket.checkedIn ? t.checked : t.confirmed;
 
   return (

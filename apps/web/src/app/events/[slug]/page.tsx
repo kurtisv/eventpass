@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Ticket } from "lucide-react";
 
+import { createDemoEventTicket } from "@/app/actions/eventpass";
 import { MarketingPageShell } from "@/components/marketing/page-shell";
 import { Button } from "@/components/ui/button";
 import { events } from "@/data/eventpass";
@@ -49,7 +49,25 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
             <div className="border bg-background p-4"><p className="text-sm text-muted-foreground">{t.source}</p><p className="mt-2 font-semibold">{event.sourceModule}</p></div>
             <div className="border bg-background p-4"><p className="text-sm text-muted-foreground">{t.linked}</p><p className="mt-2 font-semibold">{event.linkedProject}</p></div>
           </div>
-          <Button asChild className="mt-8" size="lg"><Link href="/ticket/eventpass-demo-ticket"><Ticket className="size-4" /> {t.ticket}</Link></Button>
+          <form action={createDemoEventTicket} className="mt-8 grid gap-3 sm:max-w-md">
+            <input type="hidden" name="eventSlug" value={event.slug} />
+            <input
+              className="h-10 border bg-background px-3 text-sm"
+              name="attendeeName"
+              placeholder="Mara Chen"
+              defaultValue="Mara Chen"
+            />
+            <input
+              className="h-10 border bg-background px-3 text-sm"
+              name="attendeeEmail"
+              type="email"
+              placeholder="mara@example.com"
+              defaultValue="mara@example.com"
+            />
+            <Button type="submit" size="lg">
+              <Ticket className="size-4" /> {t.ticket}
+            </Button>
+          </form>
         </div>
       </main>
     </MarketingPageShell>

@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, CalendarDays, CheckCircle2, QrCode, ScanLine, Ticket } from "lucide-react";
+import { ArrowRight, CalendarDays, CheckCircle2, Clock3, QrCode, ScanLine, Ticket, UsersRound } from "lucide-react";
 
 import { MarketingPageShell } from "@/components/marketing/page-shell";
 import { Button } from "@/components/ui/button";
-import { ecosystemTimeline, eventStats, events } from "@/data/eventpass";
+import { agendaBlocks, ecosystemTimeline, eventStats, events, registrationLanes } from "@/data/eventpass";
 import { getCurrentLocale } from "@/lib/locale";
 
 const copy = {
@@ -17,6 +17,8 @@ const copy = {
     ecosystemTitle: "Les evenements prolongent le parcours client.",
     ecosystemText:
       "EventPass utilise les memes personnes que les autres modules: un lead devient client, rejoint un atelier, achete du materiel dans CommerceKit et peut recevoir un suivi SupportDesk.",
+    agendaTitle: "Agenda operationnel",
+    lanesTitle: "Pipeline inscriptions",
   },
   en: {
     eyebrow: "Project 8 - Event registration",
@@ -28,6 +30,8 @@ const copy = {
     ecosystemTitle: "Events extend the client journey.",
     ecosystemText:
       "EventPass uses the same people as the other modules: a lead becomes a client, joins a workshop, buys materials in CommerceKit, and can receive SupportDesk follow-up.",
+    agendaTitle: "Operations agenda",
+    lanesTitle: "Registration pipeline",
   },
 };
 
@@ -58,35 +62,81 @@ export default async function Home() {
                 ))}
               </div>
             </div>
-            <div className="rounded-[1.25rem] border bg-card shadow-2xl shadow-violet-950/10">
-              <div className="border-b px-5 py-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Arrival cockpit</p>
-                <p className="mt-1 text-xl font-semibold">Founder Summit</p>
+            <div className="rounded-[1.25rem] border bg-[#17132a] text-white shadow-2xl shadow-violet-950/20">
+              <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#cdbdff]">Arrival cockpit</p>
+                  <p className="mt-1 text-xl font-semibold">Founder Summit</p>
+                </div>
+                <div className="flex size-11 items-center justify-center rounded-full bg-[#ff7a45] text-[#17132a]">
+                  <ScanLine className="size-5" />
+                </div>
               </div>
               <div className="grid gap-4 p-5">
                 {events.map((event) => (
-                  <div key={event.slug} className="rounded-lg border bg-background p-4">
+                  <div key={event.slug} className="rounded-lg border border-white/10 bg-white/[0.06] p-4">
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <p className="font-semibold">{event.name}</p>
-                        <p className="mt-1 text-sm text-muted-foreground">{event.sourceModule}</p>
+                        <p className="mt-1 text-sm text-white/55">{event.sourceModule}</p>
                       </div>
-                      <p className="rounded-full bg-secondary px-2 py-1 text-xs font-medium">{event.registered}/{event.capacity}</p>
+                      <p className="rounded-full bg-white/10 px-2 py-1 text-xs font-medium text-[#cdbdff]">{event.registered}/{event.capacity}</p>
                     </div>
-                    <div className="mt-4 h-2 rounded-full bg-muted">
-                      <div className="h-2 rounded-full bg-primary" style={{ width: `${(event.registered / event.capacity) * 100}%` }} />
+                    <div className="mt-4 h-2 rounded-full bg-white/10">
+                      <div className="h-2 rounded-full bg-[#ff7a45]" style={{ width: `${(event.registered / event.capacity) * 100}%` }} />
                     </div>
                   </div>
                 ))}
                 <div className="grid gap-3 sm:grid-cols-4">
                   {[Ticket, QrCode, ScanLine, CheckCircle2].map((Icon, index) => (
-                    <div key={t.modules[index]} className="rounded-lg border bg-muted p-3 text-xs">
-                      <Icon className="mb-3 size-4 text-primary" />
+                    <div key={t.modules[index]} className="rounded-lg border border-white/10 bg-white/[0.08] p-3 text-xs text-white/72">
+                      <Icon className="mb-3 size-4 text-[#cdbdff]" />
                       {t.modules[index]}
                     </div>
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+        <section className="border-b bg-[#fff7ed]">
+          <div className="mx-auto grid max-w-7xl gap-8 px-6 py-14 lg:grid-cols-[0.82fr_1.18fr]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#9a3412]">{t.agendaTitle}</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-normal text-balance sm:text-5xl">
+                {locale === "fr" ? "Calendrier, billets et inscriptions sont visibles dans le meme cockpit." : "Calendar, tickets, and registrations sit in the same cockpit."}
+              </h2>
+              <div className="mt-8 grid gap-3">
+                {registrationLanes.map((lane) => (
+                  <div key={lane.label} className="border bg-white p-4">
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-sm font-medium">{lane.label}</span>
+                      <span className="font-mono text-sm">{lane.value}</span>
+                    </div>
+                    <div className="mt-3 h-2 bg-black/10">
+                      <div className={`h-2 ${lane.tone}`} style={{ width: `${Math.min(Number(lane.value), 60) + 25}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="grid gap-3">
+              {agendaBlocks.map((block) => (
+                <article key={`${block.time}-${block.title}`} className="grid gap-4 border bg-white p-5 shadow-sm sm:grid-cols-[5rem_1fr_auto] sm:items-center">
+                  <div className="flex items-center gap-2 font-mono text-sm text-[#9a3412]">
+                    <Clock3 className="size-4" />
+                    {block.time}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">{block.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{block.module}</p>
+                  </div>
+                  <div className="flex items-center gap-2 border bg-[#17132a] px-3 py-2 text-sm font-semibold text-white">
+                    <UsersRound className="size-4 text-[#ff7a45]" />
+                    {block.seats}
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>

@@ -1,3 +1,5 @@
+import { EcosystemNotificationPanel } from "@/components/ecosystem/notification-panel";
+
 const stats = [
   ["Rendez-vous aujourd'hui", "0"],
   ["Revenus du mois", "$0"],
@@ -22,6 +24,9 @@ export default function DashboardPage() {
               <p className="mt-3 text-2xl font-semibold">{value}</p>
             </section>
           ))}
+        </div>
+        <div className="mt-8">
+          <EcosystemNotificationPanel appKey="eventpass" />
         </div>
       </div>
     </main>
