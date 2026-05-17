@@ -83,6 +83,21 @@ export async function getIncomingEcosystemNotifications(appKey: string, take = 6
   }
 }
 
+export async function getIncomingEcosystemEvents(appKey: string, eventType?: string, take = 10) {
+  try {
+    return await prisma.ecosystemEvent.findMany({
+      where: {
+        targetApp: appKey,
+        ...(eventType ? { eventType } : {}),
+      },
+      orderBy: { createdAt: "desc" },
+      take,
+    });
+  } catch {
+    return [];
+  }
+}
+
 export async function getRecentEcosystemEvents(take = 20) {
   try {
     return await prisma.ecosystemEvent.findMany({

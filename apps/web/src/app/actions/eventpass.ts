@@ -12,6 +12,11 @@ export async function createDemoEventTicket(formData: FormData) {
   const event = events.find((item) => item.slug === eventSlug) ?? events[0];
   const attendeeName = String(formData.get("attendeeName") ?? "Mara Chen").trim() || "Mara Chen";
   const attendeeEmail = String(formData.get("attendeeEmail") ?? "mara@example.com").trim() || "mara@example.com";
+  const flowId = String(formData.get("flowId") ?? "").trim() || undefined;
+  const sourceApp = String(formData.get("sourceApp") ?? "").trim() || undefined;
+  const sourceEventId = String(formData.get("sourceEventId") ?? "").trim() || undefined;
+  const projectName = String(formData.get("projectName") ?? "").trim() || undefined;
+  const orderNumber = String(formData.get("orderNumber") ?? "").trim() || undefined;
   const token = `ep_${nanoid(18)}`;
 
   try {
@@ -45,10 +50,22 @@ export async function createDemoEventTicket(formData: FormData) {
         token,
         attendeeName,
         attendeeEmail,
+        flowId,
+        sourceApp,
+        sourceEventId,
+        projectName,
+        orderNumber,
+        contextJson: {
+          sourceApp,
+          sourceEventId,
+          projectName,
+          orderNumber,
+        },
       },
     });
 
     await publishEcosystemEvent({
+      flowId,
       sourceApp: "eventpass",
       targetApps: ["supportdesk-lite", "api-meter"],
       eventType: "event.ticket.created",
@@ -62,6 +79,9 @@ export async function createDemoEventTicket(formData: FormData) {
         eventName: event.name,
         ticketToken: ticket.token,
         sourceModule: event.sourceModule,
+        projectName,
+        orderNumber,
+        flowId,
       },
       priority: "NORMAL",
       actionLabel: "Ouvrir le billet",
