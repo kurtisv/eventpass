@@ -2,17 +2,19 @@ export const events = [
   {
     id: "ep-event-001",
     slug: "founder-summit",
-    name: "Founder Summit",
+    name: "KV Client Launch Summit",
     date: "2026-06-12",
     venue: "Port Hall Montreal",
     capacity: 120,
     registered: 86,
-    type: "Conference",
+    type: "Client summit",
     accent: "#3c2f69",
     description: {
-      fr: "Un evenement cible pour fondateurs, equipes produit et operateurs.",
-      en: "A focused operator event for founders, builders, and product teams.",
+      fr: "Un sommet client pour transformer les leads Luma et QuotePilot en plans de lancement concrets.",
+      en: "A client summit that turns Luma and QuotePilot leads into concrete launch plans.",
     },
+    linkedProject: "Northline Launch Workspace",
+    sourceModule: "QuotePilot + ReserveFlow",
   },
   {
     id: "ep-event-002",
@@ -22,23 +24,54 @@ export const events = [
     venue: "Atelier Saint-Laurent",
     capacity: 72,
     registered: 49,
-    type: "Workshop",
+    type: "Client workshop",
     accent: "#e05d3f",
     description: {
-      fr: "Une soiree pratique sur la livraison de meilleurs produits numeriques avec de petites equipes.",
-      en: "A practical evening on shipping better digital products with small teams.",
+      fr: "Un atelier pour clients actifs dans ClientHub, avec materiel vendu par CommerceKit et suivi SupportDesk.",
+      en: "A workshop for active ClientHub customers, with CommerceKit materials and SupportDesk follow-up.",
     },
+    linkedProject: "Atelier Boutique Operations Portal",
+    sourceModule: "ClientHub + CommerceKit",
   },
 ];
 
 export const tickets = [
-  { token: "eventpass-demo-ticket", attendeeName: "Mara Chen", attendeeEmail: "mara@example.com", eventName: "Founder Summit", status: "CONFIRMED", checkedIn: false },
-  { token: "eventpass-demo-checked", attendeeName: "Elliot Moore", attendeeEmail: "elliot@example.com", eventName: "Design Ops Night", status: "CHECKED_IN", checkedIn: true },
+  { token: "eventpass-demo-ticket", attendeeName: "Mara Chen", attendeeEmail: "mara@example.com", company: "Northline Studio", eventName: "KV Client Launch Summit", source: "ClientHub", status: "CONFIRMED", checkedIn: false },
+  { token: "eventpass-demo-checked", attendeeName: "Elliot Moore", attendeeEmail: "elliot@example.com", company: "Atelier Boutique", eventName: "Design Ops Night", source: "CommerceKit", status: "CHECKED_IN", checkedIn: true },
+  { token: "eventpass-demo-support", attendeeName: "Nadia Fortin", attendeeEmail: "nadia@example.com", company: "Riverside Condo", eventName: "Design Ops Night", source: "SupportDesk Lite", status: "CONFIRMED", checkedIn: false },
 ];
 
 export const eventStats = [
   { label: "Events live", value: "2" },
   { label: "Seats tracked", value: "192" },
   { label: "Registrations", value: "135" },
-  { label: "Token tickets", value: "2" },
+  { label: "Token tickets", value: "3" },
+];
+
+export const ecosystemTimeline = [
+  {
+    module: "Luma Studio",
+    fr: "La demande initiale genere un lead qualifie.",
+    en: "The initial request creates a qualified lead.",
+  },
+  {
+    module: "QuotePilot",
+    fr: "Le lead recoit une proposition et passe au suivi client.",
+    en: "The lead receives a proposal and moves into client follow-up.",
+  },
+  {
+    module: "ClientHub",
+    fr: "Le client actif est invite a un atelier ou lancement.",
+    en: "The active client is invited to a workshop or launch event.",
+  },
+  {
+    module: "CommerceKit",
+    fr: "Le materiel ou les credits lies a l'evenement sont vendus.",
+    en: "Event materials or related credits are sold.",
+  },
+  {
+    module: "SupportDesk Lite",
+    fr: "Le suivi apres evenement reste disponible dans le support.",
+    en: "Post-event follow-up remains available through support.",
+  },
 ];

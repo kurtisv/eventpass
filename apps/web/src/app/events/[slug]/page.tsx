@@ -13,12 +13,16 @@ const copy = {
     seats: "Places",
     date: "Date",
     ticket: "Obtenir un billet demo",
+    linked: "Projet relie",
+    source: "Source",
   },
   en: {
     venue: "Venue",
     seats: "Seats",
     date: "Date",
     ticket: "Get demo ticket",
+    linked: "Linked project",
+    source: "Source",
   },
 };
 
@@ -40,6 +44,10 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
             <div className="border bg-background p-4"><p className="text-sm text-muted-foreground">{t.venue}</p><p className="mt-2 font-semibold">{event.venue}</p></div>
             <div className="border bg-background p-4"><p className="text-sm text-muted-foreground">{t.seats}</p><p className="mt-2 font-semibold">{event.registered}/{event.capacity}</p></div>
             <div className="border bg-background p-4"><p className="text-sm text-muted-foreground">{t.date}</p><p className="mt-2 font-semibold">{event.date}</p></div>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="border bg-background p-4"><p className="text-sm text-muted-foreground">{t.source}</p><p className="mt-2 font-semibold">{event.sourceModule}</p></div>
+            <div className="border bg-background p-4"><p className="text-sm text-muted-foreground">{t.linked}</p><p className="mt-2 font-semibold">{event.linkedProject}</p></div>
           </div>
           <Button asChild className="mt-8" size="lg"><Link href="/ticket/eventpass-demo-ticket"><Ticket className="size-4" /> {t.ticket}</Link></Button>
         </div>
