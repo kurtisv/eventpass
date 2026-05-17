@@ -107,6 +107,32 @@ export async function createDemoEventTicket(formData: FormData) {
       actionUrl: `/ticket/${ticket.token}`,
     });
 
+    const downstreamEvent = {
+      flowId,
+      sourceApp: "eventpass",
+      eventType: "event.ticket.created",
+      entityType: "event_ticket",
+      entityId: ticket.id,
+      customerName: attendeeName,
+      customerEmail: attendeeEmail,
+      title: "Billet cree dans EventPass",
+      description: `${attendeeName} a obtenu un billet pour ${event.name}.`,
+      payload: {
+        eventName: event.name,
+        ticketToken: ticket.token,
+        sourceModule: event.sourceModule,
+        projectName,
+        orderNumber,
+        flowId,
+      },
+      priority: "NORMAL",
+    };
+
+    await Promise.all([
+      sendEcosystemHandoff(process.env.SUPPORTDESK_INGEST_URL ?? "https://supportdesk-lite-jet.vercel.app/api/ecosystem/ingest", downstreamEvent),
+      sendEcosystemHandoff(process.env.API_METER_INGEST_URL ?? "https://api-meter.vercel.app/api/ecosystem/ingest", downstreamEvent),
+    ]);
+
     redirect(`/ticket/${ticket.token}`);
   } catch {
     redirect("/ticket/eventpass-demo-ticket");
@@ -205,6 +231,33 @@ export async function createTicketFromEcosystemEvent(formData: FormData) {
     actionUrl: `/ticket/${ticket.token}`,
   });
 
+  const downstreamEvent = {
+    flowId: event.flowId,
+    sourceApp: "eventpass",
+    eventType: "event.ticket.created",
+    entityType: "event_ticket",
+    entityId: ticket.id,
+    customerName: attendeeName,
+    customerEmail: attendeeEmail,
+    title: "Billet EventPass cree depuis le parcours reel",
+    description: `${attendeeName} a un billet pour ${savedEvent.name}.`,
+    payload: {
+      eventName: savedEvent.name,
+      ticketToken: ticket.token,
+      projectName,
+      orderNumber,
+      sourceApp: event.sourceApp,
+      sourceEventId: event.id,
+      flowId: event.flowId,
+    },
+    priority: "NORMAL",
+  };
+
+  await Promise.all([
+    sendEcosystemHandoff(process.env.SUPPORTDESK_INGEST_URL ?? "https://supportdesk-lite-jet.vercel.app/api/ecosystem/ingest", downstreamEvent),
+    sendEcosystemHandoff(process.env.API_METER_INGEST_URL ?? "https://api-meter.vercel.app/api/ecosystem/ingest", downstreamEvent),
+  ]);
+
   redirect(`/ticket/${ticket.token}`);
 }
 
@@ -246,5 +299,45 @@ export async function completeTicketCheckIn(formData: FormData) {
     actionUrl: "/dashboard",
   });
 
+  const downstreamEvent = {
+    flowId: ticket.flowId,
+    sourceApp: "eventpass",
+    eventType: "event.checkin.completed",
+    entityType: "event_ticket",
+    entityId: ticket.id,
+    customerName: ticket.attendeeName,
+    customerEmail: ticket.attendeeEmail,
+    title: "Check-in EventPass complete",
+    description: `${ticket.attendeeName} a complete le check-in pour ${ticket.event.name}.`,
+    payload: {
+      eventName: ticket.event.name,
+      ticketToken: ticket.token,
+      projectName: ticket.projectName,
+      orderNumber: ticket.orderNumber,
+      flowId: ticket.flowId,
+    },
+    priority: "NORMAL",
+  };
+
+  await Promise.all([
+    sendEcosystemHandoff(process.env.SUPPORTDESK_INGEST_URL ?? "https://supportdesk-lite-jet.vercel.app/api/ecosystem/ingest", downstreamEvent),
+    sendEcosystemHandoff(process.env.API_METER_INGEST_URL ?? "https://api-meter.vercel.app/api/ecosystem/ingest", downstreamEvent),
+  ]);
+
   redirect("/dashboard?checkedIn=1");
+}
+
+async function sendEcosystemHandoff(url: string, body: Record<string, unknown>) {
+  if (!body.flowId) return;
+
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      cache: "no-store",
+    });
+  } catch (error) {
+    console.error("Ecosystem handoff failed", error);
+  }
 }
