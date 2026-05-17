@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { getCurrentLocale } from "@/lib/locale";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,18 +14,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KV Web Starter",
-  description: "Premium modular boilerplate for marketing, booking, and SaaS/API projects.",
+  title: "EventPass",
+  description: "An event registration and check-in portfolio project built from KV Web Starter.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getCurrentLocale();
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">{children}</body>

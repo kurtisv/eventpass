@@ -1,0 +1,45 @@
+import Link from "next/link";
+import { QrCode } from "lucide-react";
+
+import { MarketingPageShell } from "@/components/marketing/page-shell";
+import { Button } from "@/components/ui/button";
+import { tickets } from "@/data/eventpass";
+import { getCurrentLocale } from "@/lib/locale";
+
+const copy = {
+  fr: {
+    eyebrow: "Billet evenement",
+    checkIn: "Ouvrir le check-in",
+    confirmed: "Confirme",
+    checked: "Arrive",
+  },
+  en: {
+    eyebrow: "Event ticket",
+    checkIn: "Open check-in",
+    confirmed: "Confirmed",
+    checked: "Checked in",
+  },
+};
+
+export default async function TicketPage({ params }: { params: Promise<{ token: string }> }) {
+  const { token } = await params;
+  const locale = await getCurrentLocale();
+  const t = copy[locale];
+  const ticket = tickets.find((item) => item.token === token) ?? tickets[0];
+  const status = ticket.checkedIn ? t.checked : t.confirmed;
+
+  return (
+    <MarketingPageShell>
+      <main className="mx-auto max-w-4xl px-6 py-16">
+        <div className="rounded-[1.25rem] border bg-card p-8">
+          <QrCode className="size-14 text-primary" />
+          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.18em] text-primary">{t.eyebrow}</p>
+          <h1 className="mt-3 text-4xl font-semibold">{ticket.eventName}</h1>
+          <p className="mt-4 text-lg text-muted-foreground">{ticket.attendeeName} - {status}</p>
+          <div className="mt-8 rounded-lg border bg-muted p-6 font-mono text-sm">{ticket.token}</div>
+          <Button asChild className="mt-8" variant="secondary"><Link href="/check-in">{t.checkIn}</Link></Button>
+        </div>
+      </main>
+    </MarketingPageShell>
+  );
+}
