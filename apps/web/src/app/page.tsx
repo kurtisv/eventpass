@@ -63,6 +63,13 @@ export default async function Home() {
 
             <div className="eventpass-scene" aria-label="3D event ticket scene">
               <div className="eventpass-stage">
+                <div className="eventpass-venue-floor" />
+                <div className="eventpass-main-stage">
+                  <span>LIVE</span>
+                  <strong>Founder Summit</strong>
+                </div>
+                <div className="eventpass-light eventpass-light-left" />
+                <div className="eventpass-light eventpass-light-right" />
                 <div className="eventpass-ticket-card">
                   <div className="flex items-center justify-between gap-4">
                     <div>
@@ -89,6 +96,10 @@ export default async function Home() {
                 <div className="eventpass-badge eventpass-badge-3">
                   <UsersRound className="size-8 text-[#cdbdff]" />
                   <span>Capacity</span>
+                </div>
+                <div className="eventpass-gate">
+                  <ScanLine className="size-8 text-[#ffe1a8]" />
+                  <span>Scan gate</span>
                 </div>
               </div>
             </div>
