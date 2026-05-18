@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Clock3, QrCode, ScanLine, Ticket, UsersRound } from "lucide-react";
+import { ArrowRight, CalendarDays, Clock3, ScanLine, UsersRound } from "lucide-react";
 
 import { MarketingPageShell } from "@/components/marketing/page-shell";
+import { EventPassScene } from "@/components/three/EventPassScene";
 import { Button } from "@/components/ui/button";
 import { agendaBlocks, eventStats, events, registrationLanes } from "@/data/eventpass";
 import { getCurrentLocale } from "@/lib/locale";
@@ -61,56 +62,7 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="eventpass-scene" aria-label="3D event ticket scene">
-              <div className="eventpass-stage">
-                <div className="eventpass-venue-floor" />
-                <div className="eventpass-audience eventpass-audience-a" />
-                <div className="eventpass-audience eventpass-audience-b" />
-                <div className="eventpass-audience eventpass-audience-c" />
-                <div className="eventpass-main-stage">
-                  <span>LIVE</span>
-                  <strong>Founder Summit</strong>
-                </div>
-                <div className="eventpass-runway" />
-                <div className="eventpass-light eventpass-light-left" />
-                <div className="eventpass-light eventpass-light-right" />
-                <div className="eventpass-ticket-card">
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/55">Founder Summit</p>
-                      <p className="mt-2 text-3xl font-semibold text-white">All Access</p>
-                    </div>
-                    <QrCode className="size-12 text-[#ffe1a8]" />
-                  </div>
-                  <div className="mt-8 grid grid-cols-2 gap-3 text-sm text-white/70">
-                    <span>Stage A</span>
-                    <span>09:30</span>
-                    <span>Row 04</span>
-                    <span>Seat 12</span>
-                  </div>
-                </div>
-                <div className="eventpass-badge eventpass-badge-1">
-                  <Ticket className="size-8 text-[#ffe1a8]" />
-                  <span>Tickets</span>
-                </div>
-                <div className="eventpass-badge eventpass-badge-2">
-                  <ScanLine className="size-8 text-[#ff9a76]" />
-                  <span>Check-in</span>
-                </div>
-                <div className="eventpass-badge eventpass-badge-3">
-                  <UsersRound className="size-8 text-[#cdbdff]" />
-                  <span>Capacity</span>
-                </div>
-                <div className="eventpass-gate">
-                  <ScanLine className="size-8 text-[#ffe1a8]" />
-                  <span>Scan gate</span>
-                </div>
-                <div className="eventpass-wristband">
-                  <span>VIP</span>
-                  <strong>04</strong>
-                </div>
-              </div>
-            </div>
+            <EventPassScene />
           </div>
         </section>
 
