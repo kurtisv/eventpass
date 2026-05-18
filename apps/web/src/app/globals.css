@@ -56,7 +56,7 @@ body {
   position: relative;
   height: 520px;
   transform-style: preserve-3d;
-  transform: rotateX(58deg) rotateZ(-28deg);
+  transform: rotateX(63deg) rotateZ(-20deg);
 }
 
 .eventpass-venue-floor {
@@ -76,19 +76,69 @@ body {
   transform-style: preserve-3d;
 }
 
+.eventpass-audience,
+.eventpass-runway,
+.eventpass-wristband {
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.eventpass-audience {
+  height: 24px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 225, 168, 0.9) 0 6px, transparent 7px) 0 0 / 30px 24px,
+    rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 28px rgba(22, 24, 39, 0.16);
+}
+
+.eventpass-audience-a {
+  left: 92px;
+  right: 140px;
+  bottom: 86px;
+  transform: translateZ(64px);
+}
+
+.eventpass-audience-b {
+  left: 136px;
+  right: 180px;
+  bottom: 134px;
+  transform: translateZ(72px);
+}
+
+.eventpass-audience-c {
+  left: 178px;
+  right: 230px;
+  bottom: 184px;
+  transform: translateZ(80px);
+}
+
 .eventpass-main-stage {
   position: absolute;
-  left: 178px;
-  top: 36px;
-  width: 330px;
-  min-height: 140px;
+  left: 170px;
+  top: 26px;
+  width: 360px;
+  min-height: 170px;
   display: grid;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(145deg, rgba(22, 24, 39, 0.98), rgba(60, 47, 105, 0.92));
+  background:
+    linear-gradient(90deg, rgba(255, 225, 168, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 225, 168, 0.08) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(22, 24, 39, 0.98), rgba(60, 47, 105, 0.92));
+  background-size: 28px 28px, 28px 28px, auto;
   color: white;
   box-shadow: 0 34px 70px rgba(22, 24, 39, 0.26);
   transform: translateZ(48px) rotateX(-68deg);
+}
+
+.eventpass-main-stage::after {
+  content: "";
+  position: absolute;
+  inset: auto 28px -18px 28px;
+  height: 18px;
+  background: #e05d3f;
+  box-shadow: 0 14px 28px rgba(224, 93, 63, 0.24);
 }
 
 .eventpass-main-stage span {
@@ -101,6 +151,16 @@ body {
 .eventpass-main-stage strong {
   margin-top: -24px;
   font-size: 1.55rem;
+}
+
+.eventpass-runway {
+  left: 296px;
+  top: 180px;
+  width: 96px;
+  height: 244px;
+  background: linear-gradient(180deg, rgba(255, 225, 168, 0.54), rgba(224, 93, 63, 0.18));
+  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+  transform: translateZ(76px);
 }
 
 .eventpass-light {
@@ -126,7 +186,8 @@ body {
 
 .eventpass-ticket-card,
 .eventpass-badge,
-.eventpass-gate {
+.eventpass-gate,
+.eventpass-wristband {
   position: absolute;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: linear-gradient(145deg, rgba(60, 47, 105, 0.98), rgba(22, 24, 39, 0.96));
@@ -136,7 +197,8 @@ body {
 
 .eventpass-ticket-card::after,
 .eventpass-badge::after,
-.eventpass-gate::after {
+.eventpass-gate::after,
+.eventpass-wristband::after {
   content: "";
   position: absolute;
   inset: auto 18px -18px 18px;
@@ -146,12 +208,12 @@ body {
 }
 
 .eventpass-ticket-card {
-  left: 58px;
-  top: 198px;
-  width: min(480px, 82vw);
-  min-height: 260px;
+  left: 34px;
+  top: 252px;
+  width: 360px;
+  min-height: 220px;
   padding: 28px;
-  transform: translateZ(150px) rotateZ(4deg);
+  transform: translateZ(166px) rotateZ(8deg) rotateY(9deg);
 }
 
 .eventpass-ticket-card::before {
@@ -174,34 +236,66 @@ body {
 
 .eventpass-badge-1 {
   left: 0;
-  top: 74px;
-  transform: translateZ(180px) rotateZ(7deg);
+  top: 92px;
+  transform: translateZ(184px) rotateZ(7deg);
 }
 
 .eventpass-badge-2 {
-  right: 28px;
-  top: 88px;
-  transform: translateZ(160px) rotateZ(-8deg);
+  right: 20px;
+  top: 232px;
+  transform: translateZ(194px) rotateZ(-8deg);
 }
 
 .eventpass-badge-3 {
-  right: 112px;
-  bottom: 28px;
-  transform: translateZ(104px) rotateZ(5deg);
+  right: 84px;
+  bottom: 34px;
+  transform: translateZ(122px) rotateZ(5deg);
 }
 
 .eventpass-gate {
-  right: 8px;
-  bottom: 126px;
-  width: 126px;
-  min-height: 190px;
+  right: 12px;
+  bottom: 134px;
+  width: 132px;
+  min-height: 220px;
   display: grid;
   gap: 18px;
   place-items: center;
   padding: 18px;
   color: white;
   font-weight: 700;
-  transform: translateZ(198px) rotateY(-18deg);
+  transform: translateZ(218px) rotateY(-22deg);
+}
+
+.eventpass-gate::before {
+  content: "";
+  position: absolute;
+  inset: 18px 34px;
+  border: 2px solid rgba(255, 225, 168, 0.38);
+}
+
+.eventpass-wristband {
+  left: 66px;
+  top: 38px;
+  width: 182px;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 999px;
+  color: #17132a;
+  background: linear-gradient(90deg, #ffe1a8, #ff7a45);
+  padding: 16px 22px;
+  transform: translateZ(230px) rotateZ(-13deg);
+}
+
+.eventpass-wristband span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.eventpass-wristband strong {
+  font-size: 1.6rem;
 }
 
 @media (max-width: 768px) {
@@ -211,7 +305,7 @@ body {
 
   .eventpass-stage {
     height: 420px;
-    transform: rotateX(58deg) rotateZ(-24deg) scale(0.72);
+    transform: rotateX(63deg) rotateZ(-18deg) scale(0.68);
     transform-origin: center;
   }
 }
