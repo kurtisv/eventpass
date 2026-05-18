@@ -12,7 +12,11 @@ const EventPassSceneCanvas = dynamic(() => import("./EventPassSceneCanvas"), {
 
 export function EventPassScene() {
   return (
-    <ThreeSceneShell label="EventPass 3D access gate" fallback={<EventPassSceneFallback />}>
+    <ThreeSceneShell
+      label="EventPass client event card"
+      fallback={<EventPassSceneFallback />}
+      className="h-[420px] sm:h-[460px] lg:h-[520px]"
+    >
       <EventPassSceneCanvas />
     </ThreeSceneShell>
   );

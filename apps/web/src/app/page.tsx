@@ -9,10 +9,10 @@ import { getCurrentLocale } from "@/lib/locale";
 
 const copy = {
   fr: {
-    eyebrow: "Vitrine 3D - Experience evenementielle",
-    title: "Une page evenement immersive avec billets, agenda et scene 3D.",
+    eyebrow: "Carte evenement client 3D",
+    title: "Une carte evenement client qui relie billet, statut et check-in.",
     intro:
-      "EventPass quitte le parcours ecosysteme et devient une vitrine evenementielle autonome: hero 3D, billet flottant, agenda clair, inscriptions et check-in visibles.",
+      "EventPass transforme les informations client en pass evenementiel clair, premium et pret au controle: identite, evenement, QR, capacite et check-in sont lisibles des le hero.",
     primary: "Voir les evenements",
     secondary: "Voir l'etude",
     modules: ["Capacite visible", "Billets par token", "Check-in admin", "Email fallback"],
@@ -21,10 +21,10 @@ const copy = {
     proofTitle: "Un site evenement doit donner envie d'entrer dans la salle.",
   },
   en: {
-    eyebrow: "3D showcase - Event experience",
-    title: "An immersive event page with tickets, agenda, and a 3D scene.",
+    eyebrow: "3D client event card",
+    title: "A client event card that ties ticket, status, and check-in together.",
     intro:
-      "EventPass leaves the ecosystem path and becomes a standalone event showcase: 3D hero, floating ticket, clear agenda, registrations, and visible check-in.",
+      "EventPass turns client information into a premium event pass: identity, event details, QR, capacity, and check-in readiness are readable directly in the hero.",
     primary: "View events",
     secondary: "View case study",
     modules: ["Visible capacity", "Token tickets", "Admin check-in", "Email fallback"],
