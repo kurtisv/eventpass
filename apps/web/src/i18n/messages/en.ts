@@ -1,7 +1,7 @@
 const en = {
   app: {
-    name: "KV Web Starter",
-    tagline: "Premium modular boilerplate for marketing, booking, and SaaS/API projects.",
+    name: "EventPass",
+    tagline: "Event module for registrations, tickets, check-in, and attendance.",
   },
   nav: {
     services: "Services",

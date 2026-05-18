@@ -22,8 +22,8 @@ export async function Footer() {
           <Link href="/case-study">{locale === "fr" ? "Etude" : "Case study"}</Link>
         </div>
         <div className="grid gap-2">
-          <Link href="/privacy">Privacy</Link>
-          <Link href="/terms">Terms</Link>
+          <Link href="/privacy">{locale === "fr" ? "Confidentialite" : "Privacy"}</Link>
+          <Link href="/terms">{locale === "fr" ? "Conditions" : "Terms"}</Link>
           <Link href="/contact">Contact</Link>
         </div>
       </div>
