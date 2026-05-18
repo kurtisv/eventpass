@@ -1,0 +1,96 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="182" y1="110" x2="1386" y2="1090" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171328"/>
+      <stop offset="0.48" stop-color="#241840"/>
+      <stop offset="1" stop-color="#140F25"/>
+    </linearGradient>
+    <linearGradient id="cardBody" x1="428" y1="238" x2="1146" y2="812" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F1FC"/>
+      <stop offset="1" stop-color="#E9E1F7"/>
+    </linearGradient>
+    <linearGradient id="cardFace" x1="470" y1="276" x2="1110" y2="754" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCFAFF"/>
+      <stop offset="1" stop-color="#F1EBFA"/>
+    </linearGradient>
+    <linearGradient id="status" x1="468" y1="618" x2="758" y2="728" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F8A70"/>
+      <stop offset="1" stop-color="#2A9C82"/>
+    </linearGradient>
+    <filter id="shadow" x="268" y="124" width="1048" height="894" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="34"/>
+      <feGaussianBlur stdDeviation="38"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0431373 0 0 0 0 0.133333 0 0 0 0.36 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_0"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_0" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" rx="52" fill="url(#bg)"/>
+  <circle cx="1246" cy="220" r="220" fill="#A78BFA" fill-opacity="0.16"/>
+  <circle cx="308" cy="216" r="170" fill="#FFFFFF" fill-opacity="0.08"/>
+  <circle cx="1244" cy="958" r="180" fill="#7C3AED" fill-opacity="0.12"/>
+
+  <g filter="url(#shadow)" transform="rotate(-8 792 560)">
+    <rect x="414" y="230" width="736" height="546" rx="42" fill="url(#cardBody)"/>
+    <rect x="448" y="264" width="670" height="478" rx="36" fill="url(#cardFace)"/>
+    <path d="M506 264H980L1118 402V330C1118 293.49 1088.51 264 1052 264H506Z" fill="#FFFFFF" fill-opacity="0.34"/>
+
+    <rect x="506" y="334" width="74" height="74" rx="24" fill="#2D1F53"/>
+    <text x="526" y="382" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">MC</text>
+    <text x="604" y="348" fill="#7A67AA" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="4">CLIENT EVENT PASS</text>
+    <text x="604" y="398" fill="#24183E" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Mara Chen</text>
+    <text x="604" y="438" fill="#5E5579" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600">Northline Studio</text>
+
+    <rect x="504" y="482" width="382" height="154" rx="28" fill="#FFFFFF" fill-opacity="0.72" stroke="#D8CFEE"/>
+    <text x="540" y="526" fill="#705DA5" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="4">EVENT</text>
+    <text x="540" y="576" fill="#24183E" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700">KV Client Launch Summit</text>
+    <text x="540" y="622" fill="#564A74" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">Port Hall Montreal   |   June 12, 2026</text>
+
+    <rect x="930" y="332" width="142" height="180" rx="28" fill="#F7F3FF" stroke="#D8CFEE"/>
+    <text x="974" y="372" fill="#705DA5" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">QR</text>
+    <g transform="translate(964 402)">
+      <rect width="74" height="74" rx="12" fill="#FFFFFF"/>
+      <rect x="8" y="8" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="18" y="8" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="28" y="8" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="48" y="8" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="58" y="8" width="8" height="8" rx="2" fill="#24183E"/>
+      <rect x="8" y="18" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="28" y="18" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="48" y="18" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="8" y="28" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="18" y="28" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="28" y="28" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="48" y="28" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="58" y="28" width="8" height="8" rx="2" fill="#24183E"/>
+      <rect x="18" y="38" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="38" y="38" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="8" y="48" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="18" y="48" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="28" y="48" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="48" y="48" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="58" y="48" width="8" height="8" rx="2" fill="#24183E"/>
+      <rect x="8" y="58" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="28" y="58" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="48" y="58" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="16" y="32" width="44" height="6" rx="3" fill="#A78BFA" fill-opacity="0.55"/>
+    </g>
+
+    <rect x="504" y="654" width="308" height="74" rx="24" fill="url(#status)"/>
+    <text x="540" y="690" fill="#CFFCF2" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">STATUS</text>
+    <text x="540" y="720" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700">Confirmed</text>
+
+    <rect x="1042" y="548" width="116" height="116" rx="58" fill="#140F25" fill-opacity="0.82" stroke="#C4B5FD" stroke-opacity="0.24"/>
+    <text x="1068" y="592" fill="#C9B7FF" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3">CAPACITY</text>
+    <text x="1074" y="634" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">86 / 120</text>
+
+    <rect x="938" y="554" width="120" height="46" rx="23" fill="#FFFFFF" fill-opacity="0.16" stroke="#FFFFFF" stroke-opacity="0.2"/>
+    <text x="964" y="584" fill="#F5F3FF" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Ticket token</text>
+
+    <rect x="914" y="684" width="162" height="46" rx="23" fill="#1C1633" fill-opacity="0.74" stroke="#34D399" stroke-opacity="0.24"/>
+    <text x="944" y="714" fill="#ECFDF5" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Check-in ready</text>
+  </g>
+</svg>

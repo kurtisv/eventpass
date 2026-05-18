@@ -1,0 +1,82 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="110" y1="86" x2="792" y2="1120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171328"/>
+      <stop offset="0.48" stop-color="#241840"/>
+      <stop offset="1" stop-color="#140F25"/>
+    </linearGradient>
+    <linearGradient id="cardBody" x1="156" y1="212" x2="760" y2="972" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F1FC"/>
+      <stop offset="1" stop-color="#E9E1F7"/>
+    </linearGradient>
+    <linearGradient id="cardFace" x1="188" y1="248" x2="724" y2="912" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCFAFF"/>
+      <stop offset="1" stop-color="#F1EBFA"/>
+    </linearGradient>
+    <filter id="shadow" x="80" y="140" width="744" height="940" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="30"/>
+      <feGaussianBlur stdDeviation="26"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0431373 0 0 0 0 0.133333 0 0 0 0.36 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_0"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_0" result="shape"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1200" rx="44" fill="url(#bg)"/>
+  <circle cx="722" cy="172" r="170" fill="#A78BFA" fill-opacity="0.16"/>
+  <circle cx="164" cy="180" r="140" fill="#FFFFFF" fill-opacity="0.08"/>
+
+  <g filter="url(#shadow)" transform="rotate(-7 444 590)">
+    <rect x="158" y="224" width="584" height="720" rx="40" fill="url(#cardBody)"/>
+    <rect x="186" y="256" width="530" height="660" rx="34" fill="url(#cardFace)"/>
+    <rect x="236" y="324" width="66" height="66" rx="22" fill="#2D1F53"/>
+    <text x="254" y="368" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">MC</text>
+    <text x="326" y="338" fill="#7A67AA" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">CLIENT EVENT PASS</text>
+    <text x="326" y="386" fill="#24183E" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">Mara Chen</text>
+    <text x="326" y="424" fill="#5E5579" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">Northline Studio</text>
+
+    <rect x="236" y="472" width="396" height="176" rx="28" fill="#FFFFFF" fill-opacity="0.72" stroke="#D8CFEE"/>
+    <text x="270" y="516" fill="#705DA5" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">EVENT</text>
+    <text x="270" y="566" fill="#24183E" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700">KV Client Launch Summit</text>
+    <text x="270" y="612" fill="#564A74" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600">Port Hall Montreal</text>
+    <text x="270" y="646" fill="#564A74" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600">June 12, 2026</text>
+
+    <rect x="250" y="682" width="292" height="70" rx="24" fill="#248E75"/>
+    <text x="286" y="718" fill="#CFFCF2" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">STATUS</text>
+    <text x="286" y="744" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Confirmed</text>
+
+    <rect x="560" y="680" width="112" height="112" rx="56" fill="#140F25" fill-opacity="0.82" stroke="#C4B5FD" stroke-opacity="0.24"/>
+    <text x="582" y="722" fill="#C9B7FF" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3">SEATS</text>
+    <text x="580" y="758" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">86 / 120</text>
+
+    <rect x="520" y="352" width="138" height="180" rx="28" fill="#F7F3FF" stroke="#D8CFEE"/>
+    <text x="566" y="392" fill="#705DA5" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="4">QR</text>
+    <g transform="translate(554 420)">
+      <rect width="70" height="70" rx="12" fill="#FFFFFF"/>
+      <rect x="8" y="8" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="18" y="8" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="28" y="8" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="48" y="8" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="8" y="18" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="28" y="18" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="48" y="18" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="8" y="28" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="18" y="28" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="28" y="28" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="48" y="28" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="58" y="28" width="4" height="4" rx="1" fill="#24183E"/>
+      <rect x="18" y="38" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="38" y="38" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="8" y="48" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="18" y="48" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="28" y="48" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="48" y="48" width="10" height="10" rx="2" fill="#24183E"/>
+      <rect x="10" y="30" width="46" height="6" rx="3" fill="#A78BFA" fill-opacity="0.55"/>
+    </g>
+  </g>
+
+  <rect x="574" y="988" width="204" height="56" rx="28" fill="#1C1633" fill-opacity="0.72" stroke="#34D399" stroke-opacity="0.24"/>
+  <text x="610" y="1024" fill="#ECFDF5" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Check-in ready</text>
+</svg>

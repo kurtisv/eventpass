@@ -9,28 +9,28 @@ import { getCurrentLocale } from "@/lib/locale";
 
 const copy = {
   fr: {
-    eyebrow: "Carte evenement client 3D",
-    title: "Une carte evenement client qui relie billet, statut et check-in.",
+    eyebrow: "Visuel carte evenement premium",
+    title: "Une carte evenement client claire, lisible et premium des le hero.",
     intro:
-      "EventPass transforme les informations client en pass evenementiel clair, premium et pret au controle: identite, evenement, QR, capacite et check-in sont lisibles des le hero.",
+      "EventPass transforme les informations client en carte evenement premium: identite, evenement, QR, capacite et check-in restent lisibles meme en simple screenshot.",
     primary: "Voir les evenements",
     secondary: "Voir l'etude",
     modules: ["Capacite visible", "Billets par token", "Check-in admin", "Email fallback"],
     agendaTitle: "Agenda operationnel",
     lanesTitle: "Pipeline inscriptions",
-    proofTitle: "Un site evenement doit donner envie d'entrer dans la salle.",
+    proofTitle: "Le hero doit faire lire la carte avant meme de lire l'interface.",
   },
   en: {
-    eyebrow: "3D client event card",
-    title: "A client event card that ties ticket, status, and check-in together.",
+    eyebrow: "Premium event card visual",
+    title: "A client event card that stays clear, readable, and premium in the hero.",
     intro:
-      "EventPass turns client information into a premium event pass: identity, event details, QR, capacity, and check-in readiness are readable directly in the hero.",
+      "EventPass turns client information into a premium event card: identity, event details, QR, capacity, and check-in readiness stay readable even in a single screenshot.",
     primary: "View events",
     secondary: "View case study",
     modules: ["Visible capacity", "Token tickets", "Admin check-in", "Email fallback"],
     agendaTitle: "Operations agenda",
     lanesTitle: "Registration pipeline",
-    proofTitle: "An event site should make people feel the room before they enter it.",
+    proofTitle: "The hero should make the card readable before the interface gets technical.",
   },
 } as const;
 
