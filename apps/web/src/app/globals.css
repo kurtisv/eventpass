@@ -46,3 +46,91 @@ body {
     linear-gradient(90deg, rgba(60, 47, 105, 0.07) 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
+.eventpass-scene {
+  min-height: 520px;
+  perspective: 1200px;
+}
+
+.eventpass-stage {
+  position: relative;
+  height: 520px;
+  transform-style: preserve-3d;
+  transform: rotateX(58deg) rotateZ(-28deg);
+}
+
+.eventpass-ticket-card,
+.eventpass-badge {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(145deg, rgba(60, 47, 105, 0.98), rgba(22, 24, 39, 0.96));
+  box-shadow: 0 34px 70px rgba(22, 24, 39, 0.26);
+  transform-style: preserve-3d;
+}
+
+.eventpass-ticket-card::after,
+.eventpass-badge::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px -18px 18px;
+  height: 18px;
+  background: rgba(22, 24, 39, 0.34);
+  filter: blur(12px);
+}
+
+.eventpass-ticket-card {
+  left: 72px;
+  top: 92px;
+  width: min(480px, 82vw);
+  min-height: 260px;
+  padding: 28px;
+  transform: translateZ(130px);
+}
+
+.eventpass-ticket-card::before {
+  content: "";
+  position: absolute;
+  inset: 94px 0 auto 0;
+  border-top: 1px dashed rgba(255, 255, 255, 0.22);
+}
+
+.eventpass-badge {
+  display: grid;
+  gap: 18px;
+  width: 150px;
+  min-height: 150px;
+  place-items: center;
+  padding: 20px;
+  color: white;
+  font-weight: 700;
+}
+
+.eventpass-badge-1 {
+  left: 0;
+  top: 36px;
+  transform: translateZ(180px) rotateZ(7deg);
+}
+
+.eventpass-badge-2 {
+  right: 26px;
+  top: 24px;
+  transform: translateZ(160px) rotateZ(-8deg);
+}
+
+.eventpass-badge-3 {
+  right: 90px;
+  bottom: 34px;
+  transform: translateZ(104px) rotateZ(5deg);
+}
+
+@media (max-width: 768px) {
+  .eventpass-scene {
+    min-height: 420px;
+  }
+
+  .eventpass-stage {
+    height: 420px;
+    transform: rotateX(58deg) rotateZ(-24deg) scale(0.72);
+    transform-origin: center;
+  }
+}
